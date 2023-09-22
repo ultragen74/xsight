@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Xsight</title>
+    <!-- Scripts -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/app.css') }}" />
+    <script type="module" src="{{ url_for('static', path='js/app.js') }}"></script>    </head>
+<body class="bg-violet-50 dark:bg-slate-900 dark:mix-blend-multiply bg-[url('https://local.xdata.com/images/light-bg.png')] dark:bg-[url('https://local.xdata.com/images/dark-bg.png')]">
+<div class="relative flex flex-row md:gap-4 xl:gap-8 h-auto">
+    <aside id="miniSidebar" class="w-32 h-[calc(100vh-2.5rem)] transition transform ease-in duration-300 py-4 fixed flex flex-col items-center bg-white dark:bg-gray-900 bg-opacity-40 mx-auto rounded-3xl shadow border border-white dark:border-zinc-600 backdrop-blur-md">
+        <!--Sidebar Navigation & profile Photo -->
+        <div class="w-16 h-auto my-4 mx-auto gap-y-4 flex flex-col justify-center">
+            <!-- Open/Close Hamburger -->
+            <div class="w-14 h-14" id="sidebarMaximise">
+                <div class="w-14 h-14 flex justify-center items-center bg-white bg-opacity-30 rounded-3xl shadow border-2 border-white dark:border-zinc-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 left-[18px] top-[18px]">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                    </svg>
+                </div>
+            </div>
+            <!-- Open/Close Hamburger -->
+            <!-- Profile image -->
+            <img class="w-16 h-16 p-0 bg-white bg-opacity-30 rounded-2xl shadow border-2 border-white dark:border-zinc-600" src="https://picsum.photos/60/60?random=1" alt="img"/>
+            <!-- Profile image -->
+        </div>
+        <!--Sidebar Navigation & profile Photo -->
+        <div class="mx-auto my-4 text-center text-slate-500 dark:text-gray-400 text-base font-normal leading-normal">Conversation</div>
+        <div class="w-32 h-0.5 my-2 bg-violet-100"></div>
+
+        <!--- Conversation History ---->
+        <div class="w-20 h-auto mx-7 px-7 py-4 bg-white dark:bg-slate-900 rounded-3xl border flex-col justify-center items-center inline-flex">
+            <div class="self-stretch grow shrink basis-0 relative">
+                <div class="w-6 h-6 flex-col justify-start items-start inline-flex dark:text-zinc-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 relative flex-col justify-start items-start inline-flex">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                </div>
+                <div class="w-6 h-6 flex-col justify-start items-start inline-flex dark:text-zinc-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 relative flex-col justify-start items-start inline-flex">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                </div>
+                <div class="w-6 h-6 flex-col justify-start items-start inline-flex dark:text-zinc-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 relative flex-col justify-start items-start inline-flex">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                </div>
+                <div class="w-6 h-6 flex-col justify-start items-start inline-flex dark:text-zinc-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 relative flex-col justify-start items-start inline-flex">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                </div>
+                <div class="w-6 h-6 flex-col justify-start items-start inline-flex dark:text-zinc-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 relative flex-col justify-start items-start inline-flex">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                </div>
+                <div class="w-6 h-6 flex-col justify-start items-start inline-flex dark:text-zinc-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 relative flex-col justify-start items-start inline-flex">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <!--- Conversation History ---->
+
+        <!-- add New conversation -->
+        <div class="w-20 h-auto px-6 mx-6 my-6 pt-4 pb-3.5 bg-pink-600 rounded-3xl justify-center items-center inline-flex">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white relative rounded-lg flex-col justify-start items-start inline-flex">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+            </svg>
+        </div>
+        <!-- add New conversation -->
+        <!--- Separator ---->
+        <div class="w-32 h-px my-2 border border-white border-opacity-10"></div>
+        <!--- Separator ---->
+        <!----- Settings ----->
+        <div class="w-20 h-auto mx-auto relative flex flex-col gap-2 items-center justify-center place-items-center">
+            <a href="#" class="w-6 h-6 flex-col justify-start items-start inline-flex text-violet-950 dark:text-slate-300">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                </svg>
+            </a>
+            <div class="w-6 h-6 flex-col justify-start items-start inline-flex text-violet-950 dark:text-slate-300 cursor-pointer" id="themeMode">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+            </div>
+            <a href="#" class="w-6 h-6 flex-col justify-start items-start inline-flex text-violet-950 dark:text-slate-300">
+                <div class="w-5 h-5 relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                    </svg>
+                </div>
+            </a>
+            <a href="#" class="w-6 h-6 flex-col justify-start items-start inline-flex text-violet-950 dark:text-slate-300">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+            </a>
+            <a href="#" class="w-6 h-6 flex-col justify-start items-start inline-flex text-violet-950 dark:text-pink-600">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
+                </svg>
+            </a>
+        </div>
+        <!----- Settings ----->
+    </aside>
+    <aside class="w-[320px] hidden sticky top-0 h-full px-4 bg-white bg-opacity-40 rounded-3xl shadow border border-white backdrop-blur-md pr-5" id="maxSidebar">
+        <!-- Settings -->
+        <div class="relative flex-col justify-start items-start gap-4 inline-flex mb-5 border-2 border-transparent border-b-violet-100">
+            <div class="w-full relative py-4 bg-white bg-opacity-5 rounded-3xl justify-start items-center gap-4 inline-flex">
+                <img x-show="expanded" class="w-14 h-14 rounded-2xl" src="https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_1280.png" alt=""/>
+                <div x-show="expanded" class="flex-col justify-start items-start inline-flex">
+                    <div class="text-violet-950 dark:text-zinc-300 text-xl font-medium leading-loose">Ankit</div>
+                    <div class="text-slate-500 dark:text-zinc-400 text-lg font-normal leading-relaxed">Free account</div>
+                </div>
+                <a href="#" id="closeSidebar" class="absolute top-20 -right-12 w-11 h-11 bg-white bg-opacity-30 rounded-xl shadow border border-white dark:border-zinc-600 text-center p-2" x-on:click="expanded = ! expanded">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-violet-950">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <!-- Settings -->
+        <div class="text-slate-500 dark:text-gray-400 text-base font-normal leading-normal mb-2 ml-2">Recent conversations</div>
+        <!-- Conversation -->
+        <div class="relative w-full h-80 bg-white dark:bg-slate-900 rounded-3xl border mb-5 px-4">
+            <div class="fixed left-0 right-0 scroll-smooth overflow-scroll h-80">
+                <div class="w-full h-auto flex-col justify-start items-start inline-flex">
+                    <div class="w-full px-5 py-4 rounded-2xl justify-start items-center gap-4 inline-flex text-slate-500 dark:text-zinc-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                        </svg>
+                        <div class="text-lg font-normal leading-relaxed">How to write an impacting ...</div>
+                    </div>
+                    <div class="w-full px-5 py-4 rounded-2xl justify-start items-center gap-4 inline-flex text-slate-500 dark:text-zinc-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                        </svg>
+                        <div class="text-slate-500 text-lg font-normal leading-relaxed">Web accessibility</div>
+                    </div>
+                    <div class="w-full px-5 py-4 rounded-2xl justify-start items-center gap-4 inline-flex text-slate-500 dark:text-zinc-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                        </svg>
+                        <div class="text-slate-500 text-lg font-normal leading-relaxed">Design inspiration</div>
+                    </div>
+                    <div class="w-full px-5 py-4 rounded-2xl justify-start items-center gap-4 inline-flex text-slate-500 dark:text-zinc-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                        </svg>
+                        <div class="text-slate-500 text-lg font-normal leading-relaxed">What is machine learning</div>
+                    </div>
+                    <div class="w-full px-5 py-4 rounded-2xl justify-start items-center gap-4 inline-flex text-slate-500 dark:text-zinc-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                        </svg>
+                        <div class="HowToWriteAnImpacting text-slate-500 text-lg font-normal leading-relaxed">How to write an impacting ...</div>
+                    </div>
+                    <div class="w-full px-5 py-4 rounded-2xl justify-start items-center gap-4 inline-flex text-slate-500 dark:text-zinc-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                        </svg>
+                        <div class="WebAccessibility text-slate-500 text-lg font-normal leading-relaxed">Web accessibility</div>
+                    </div>
+                    <div class="w-full px-5 py-4 rounded-2xl justify-start items-center gap-4 inline-flex text-slate-500 dark:text-zinc-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                        </svg>
+                        <div class="DesignInspiration text-slate-500 text-lg font-normal leading-relaxed">Design inspiration</div>
+                    </div>
+                    <div class="w-full px-5 py-4 rounded-2xl justify-start items-center gap-4 inline-flex text-slate-500 dark:text-zinc-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                        </svg>
+                        <div class="text-slate-500 text-lg font-normal leading-relaxed">What is machine learning</div>
+                    </div>
+                </div>
+            </div>
+            <!---- Scrollbar customization ---->
+
+            <!--    Scrollbar Customization -->
+        </div>
+        <!-- Conversation -->
+        <div class="w-full px-5 py-4 bg-pink-600 rounded-3xl justify-start items-center gap-4 inline-flex">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white rounded-lg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+            </svg>
+            <div class="StartANewChat text-white text-xl font-medium leading-loose">Start a new chat</div>
+        </div>
+
+        <div class="flex-col w-full justify-between items-start gap-2 flex">
+            <div class="Separator self-stretch h-px border border-white border-opacity-10"></div>
+            <div class="w-full py-4 rounded-2xl justify-start items-center gap-x-4 inline-flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-violet-950">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                </svg>
+                <div class="ClearAllConversations text-violet-950 text-lg font-normal leading-relaxed">Clear all conversations</div>
+            </div>
+            <div class="w-full py-4 rounded-2xl justify-start items-center gap-x-4 inline-flex" id="themeMode">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-violet-950 dark:text-slate-300">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+                <div class="SwitchToDarkMode text-violet-950 dark:text-slate-300 text-lg font-normal leading-relaxed">Switch to Dark Mode</div>
+            </div>
+            <div class="w-full py-4 rounded-2xl justify-start items-center gap-x-4 inline-flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-violet-950 dark:text-slate-300">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                </svg>
+                <div class="UpgradeToProAccount text-violet-950 dark:text-slate-300 text-lg font-normal leading-relaxed">Upgrade to Pro Account</div>
+            </div>
+            <div class="w-full py-4 rounded-2xl justify-start items-center gap-x-4 inline-flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-violet-950 dark:text-slate-300">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+                <div class="UpdatesFaq text-violet-950 dark:text-slate-300 text-lg font-normal leading-relaxed">Updates & FAQ</div>
+            </div>
+            <div class="w-full py-4 rounded-2xl justify-start items-center gap-x-4 inline-flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-violet-950 dark:text-pink-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
+                </svg>
+                <div class="LogOut text-pink-600 dark:text-pink-500 text-xl font-normal leading-loose">Log out</div>
+            </div>
+        </div>
+    </aside>
+    <main class="left-0 right-0 ml-36 flex flex-col flex-1 justify-items-center w-[calc(100%-24rem)] gap-6 relative overflow-hidden py-6 pr-6" id="main">
+        <!-- Chat App Version -->
+        <div class="w-full flex justify-between h-20 bg-white md:px-12 bg-opacity-40 items-center rounded-3xl shadow border border-white dark:border-zinc-600">
+            <div class="text-slate-500 dark:text-gray-400 text-3xl font-medium leading-10">DcodingX  (v 1.1.1)</div>
+            <div class="h-20 flex flex-row-reverse items-center">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-11 h-11 text-slate-500 dark:text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-11 h-11 text-slate-500 dark:text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-11 h-11 text-slate-500 dark:text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <!-- Chat App Version -->
+        <!-- Main Center Panel -->
+        <div class="flex w-full">
+            <!-- Chat Panel -->
+            <div id="chat-area" class="w-full h-auto">
+                <!-- <div class="flex flex-row gap-5">
+                    <div class="w-10 h-10 rounded-full border border-purple-200">
+                        <img alt="" class="w-10 h-10 left-0 top-0 rounded-3xl" src="https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_1280.png" />
+                    </div>
+                    <div class="w-full h-14 px-5 py-4 bg-pink-600 rounded-2xl border border-white dark:border-zinc-600 justify-between items-center inline-flex mb-2">
+                        <div class="text-white text-lg font-medium leading-none">What are the last year’s sales of the candies of our company? </div>
+                        <a href="!#" class="relative flex-col justify-start items-start flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                            </svg>
+                        </a>
+                    </div>
+                </div> -->
+                <!-- <div class="flex flex-row gap-5">
+                    <div class="w-10 h-10 flex items-center justify-center bg-gradient-to-t from-pink-600 to-violet-900 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                        </svg>
+                    </div>
+                    <div class="w-full p-5 bg-white rounded-2xl border border-violet-100 dark:border-zinc-600">
+                        <div class="w-full mb-7">
+                        <span class="text-violet-950 dark:text-slate-300 text-lg font-normal leading-normal">
+                            Artificial Intelligence (AI) offers numerous advantages and has the potential to revolutionize various aspects of our lives. Here are some key advantages of AI:<br/><br/></span>
+                            <ol class="list-decimal text-violet-950 dark:text-slate-300 text-lg font-normal leading-normal pl-4">
+                                <li>Automation: AI can automate repetitive and mundane tasks, saving time and effort for humans. It can handle large volumes of data, perform complex calculations, and execute tasks with precision and consistency. This automation leads to increased productivity and efficiency in various industries.</li>
+                                <li>Decision-making: AI systems can analyze vast amounts of data, identify patterns, and make informed decisions based on that analysis. This ability is particularly useful in complex scenarios where humans may struggle to process large datasets or where quick and accurate decisions are crucial.</li>
+                                <li>Improved accuracy: AI algorithms can achieve high levels of accuracy and precision in tasks such as image recognition, natural language processing, and data analysis. They can eliminate human errors caused by fatigue, distractions, or bias, leading to more reliable and consistent results.</li>
+                                <li>Continuous operation: AI systems can work tirelessly without the need for breaks, resulting in uninterrupted 24/7 operations. This capability is especially beneficial in applications like customer support chatbots, manufacturing processes, and surveillance systems.</li>
+                            </ol>
+                        </div>
+                        <div class="w-full h-11">
+                            <div class="h-11 px-5 py-4 bg-pink-600 dark:bg-slate-700 rounded-3xl justify-start items-center gap-4 inline-flex">
+                                <div class="SourceData text-white dark:text-slate-300 text-lg font-medium leading-relaxed">Source Data</div>
+                            </div>
+                            <div class="h-11 px-5 py-4 bg-purple-100 dark:bg-slate-700 rounded-3xl justify-start items-center gap-4 inline-flex">
+                                <div class="Dashboard text-violet-950 dark:text-slate-300 text-lg font-medium leading-relaxed">Dashboard</div>
+                            </div>
+                            <div class="h-11 px-5 py-4 bg-purple-100 dark:bg-slate-700 rounded-3xl justify-start items-center gap-4 inline-flex">
+                                <div class="BeyondInsights text-violet-950 dark:text-slate-300 text-lg font-medium leading-relaxed">Beyond Insights</div>
+                            </div>
+                            <div class="h-11 px-5 py-4 bg-purple-100 dark:bg-slate-700 rounded-3xl justify-start items-center gap-4 inline-flex">
+                                <div class="QuickInsights text-violet-950 dark:text-slate-300 text-lg font-medium leading-relaxed">Quick Insights</div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <!-- Chat Panel -->
+            <!-- Right side Panel -->
+            <!--- Source btn---->
+            <div class="flex-none basis-1/4 ml-6 h-full bg-white rounded-2xl py-5 px-7 flex-col justify-start items-start inline-flex divide-y dark:divide-zinc-600" x-data="{ expanded: true }">
+                <div class="text-violet-950 dark:text-slate-300 text-2xl font-bold leading-9">Source Data</div>
+                <div class="w-full flex items-center justify-between gap-y-4 h-14">
+                    <div class="left-9 top-5 text-slate-500 dark:text-gray-400 text-lg font-medium leading-5">Products table</div>
+                    <div class="w-5 h-5 pl-1 pr-1.5 pt-2 pb-1.5 justify-center items-center inline-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 dark:text-gray-400">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="w-full flex items-center justify-between gap-y-4 h-14">
+                    <div class="left-9 top-5 text-slate-500 dark:text-gray-400 text-lg font-medium leading-5">Sales table</div>
+                    <div class="w-5 h-5 pl-1 pr-1.5 pt-2 pb-1.5 justify-center items-center inline-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 dark:text-gray-400">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="w-full flex items-center justify-between gap-y-4 h-14">
+                    <div class="left-9 top-5  text-slate-500 dark:text-gray-400 text-lg font-medium leading-5">Category table</div>
+                    <div class="w-5 h-5 pl-1 pr-1.5 pt-2 pb-1.5 justify-center items-center inline-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 dark:text-gray-400">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="w-full flex items-center justify-between gap-y-4 h-14" x-on:click="expanded =! expanded">
+                    <div class="left-9 top-5 text-violet-950 dark:text-slate-300 text-lg font-medium leading-5">Data table</div>
+                    <div class="w-5 h-5 pl-1 pr-1.5 pt-2 pb-1.5 justify-center items-center inline-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 dark:text-gray-400">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="w-full h-auto py-2 text-slate-500 dark:text-slate-300 text-sm font-normal leading-relaxed" x-show="expanded" x-collapse>
+                    <!-- const express = require('express');
+                    const bodyParser = require('body-parser');
+                    const mongoose = require('mongoose');
+                    // Replace 'your_database_connection_string' with your actual MongoDB connection string
+                    const dbConnectionString = 'your_database_connection_string';
+                    mongoose.connect(dbConnectionString, { useNewUrlParser: true, useUnifiedTopology: true })
+                    .then(() => console.log('Connected to MongoDB'))
+                    .catch((err) => console.error('MongoDB connection error:', err)); -->
+                </div>
+                <div class="w-full h-54 text-slate-500 dark:text-slate-300 text-sm font-normal leading-none"></div>
+            </div>
+            <!--- Source btn---->
+            <!-- Right side Panel -->
+        </div>
+        <!-- Regenerate Response -->
+        <div class="w-56 mx-auto h-14 rounded-3xl border border-purple-200 dark:border-zinc-600 justify-center items-center gap-2.5 inline-flex">
+            <div class="w-44 h-4 text-violet-950 dark:text-gray-400 text-sm font-bold leading-none flex flex-row gap-2 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                </svg>
+                Regenerate response
+            </div>
+        </div>
+        <!-- Regenerate Response -->
+        <div class="flex mx-auto w-2/3 relative h-16">
+            <input id="chat-message-input" type="text" aria-label="" placeholder="Example : “Show me total candy sale report of previous month”" class="w-full h-16 bg-white dark:bg-gray-800 rounded-3xl border border-white dark:border-zinc-600 border-opacity-30 backdrop-blur-2xl justify-start items-center inline-flex pl-9 text-slate-500 dark:text-zinc-500 text-opacity-40 text-lg font-medium leading-7">
+
+
+            <button id="chat-message-submit" class="absolute flex justify-center items-center text-center right-2.5 top-2 bottom-2 w-16 h-12 bg-gradient-to-br from-violet-900 to-rose-600 rounded-3xl shadow">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                </svg>
+            </button>
+        </div>
+        <!-- Main Center Panel -->
+        <!--  Footer  -->
+        <div class="flex w-full justify-between h-6">
+            <p class="lg:w-3/12 text-center text-slate-500 dark:text-zinc-400 text-sm font-medium leading-normal">© 2023 DecodingX. All Rights Reserved.</p>
+            <div class="flex lg:w-4/12 flex-row justify-between h-6">
+                <a class="text-center text-slate-500 dark:text-zinc-400 text-sm font-medium leading-normal">Homepage</a>
+                <a class="text-center text-slate-500 dark:text-zinc-400 text-sm font-medium leading-normal">License</a>
+                <a class="text-center text-slate-500 dark:text-zinc-400 text-sm font-medium leading-normal">Terms of Use</a>
+                <a class="text-center text-slate-500 dark:text-zinc-400 text-sm font-medium leading-normal">Privacy Policy</a>
+            </div>
+        </div>
+        <!--  Footer  -->
+    </main>
+</div>
+<script src="https://local.xdata.com/assets/css/jquery-3.7.min.js"></script>
+<script>
+  var wss_protocol = window.location.protocol == "https:" ? "wss://" : "ws://";
+  var chatSocket = new WebSocket(
+    wss_protocol + window.location.host + "/chat?token=7f898cb0-1643-4a65-b309-b64d194263a6"
+  );
+  var messages = [];
+
+//   chatSocket.onopen = function (e) {
+//     document.querySelector("#chat-header").innerHTML =
+//       "Welcome to Django Chatbot";
+//   };
+
+  chatSocket.onmessage = function (e) {
+    var message = JSON.parse(e.data);
+    // var message = data["text"];
+    // console.log(data);
+    messages.push(message);
+
+    var output_html = '';
+    // messages.forEach(function (msg) {
+    //   output_html += `<li class="flex ${
+    //     msg.source == "bot" ? "justify-start" : "justify-end"
+    //   }">
+    //   <div class="relative max-w-xl px-4 py-2 rounded-lg shadow-md
+    //     ${
+    //       msg.source == "bot"
+    //         ? "text-gray-700 bg-white border border-gray-200"
+    //         : "bg-blue-600 text-white"
+    //     }">
+    //     <span className="block font-normal">${msg.msg}</span></div></li>`;
+    console.log(message);
+        if (message.source == "bot"){
+                output_html +=
+                    `<div class="flex flex-row gap-5">
+                    <div class="w-10 h-10 flex items-center justify-center bg-gradient-to-t from-pink-600 to-violet-900 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                        </svg>
+                    </div>
+                    <div class="w-full p-5 bg-white rounded-2xl border border-violet-100 dark:border-zinc-600">
+                        <div class="w-full mb-7">
+                         <span class="text-violet-950 dark:text-slate-300 text-lg font-normal leading-normal">
+                            ${message.msg}
+                         </span>
+                        </div>
+                    </div>
+                </div>`;
+        }
+    // });
+    // str += "</ul>";
+    // document.querySelector("#chat-log").innerHTML = str;
+    // console.log(message);
+    document.querySelector("#chat-area").innerHTML += output_html;
+  };
+
+  chatSocket.onclose = function (e) {
+    alert("Socket closed unexpectedly, please reload the page.");
+  };
+
+  document.querySelector("#chat-message-input").focus();
+  document.querySelector("#chat-message-input").onkeyup = function (e) {
+    if (e.keyCode === 13) {
+      // enter, return
+      document.querySelector("#chat-message-submit").click();
+    }
+  };
+  document.onkeypress = function(e) {
+    if(e.keyCode === 13) //if enter pressed
+    {
+        document.querySelector("#chat-message-submit").click();
+    }
+
+}
+
+  document.querySelector("#chat-message-submit").onclick = function (e) {
+    var messageInputDom = document.querySelector("#chat-message-input");
+    var message = messageInputDom.value;
+    input_html = `<div class="flex flex-row gap-5">
+                    <div class="w-10 h-10 rounded-full border border-purple-200">
+                        <img alt="" class="w-10 h-10 left-0 top-0 rounded-3xl" src="https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_1280.png" />
+                    </div>
+                    <div class="w-full h-14 px-5 py-4 bg-pink-600 rounded-2xl border border-white dark:border-zinc-600 justify-between items-center inline-flex mb-2">
+                        <div class="text-white text-lg font-medium leading-none">${message}</div>
+                        <!-- <a href="!#" class="relative flex-col justify-start items-start flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                            </svg>
+                        </a> -->
+                    </div>
+                </div>`
+
+    document.querySelector("#chat-area").innerHTML += input_html;
+    chatSocket.send(
+      JSON.stringify({
+        msg: message,
+        source: "user"
+      })
+    );
+
+    messageInputDom.value = "";
+  };
+</script>
+</body>
+</html>
