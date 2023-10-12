@@ -1,11 +1,13 @@
 from threading import Thread
 from typing import Iterator, List, Tuple
+import os
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, TextIteratorStreamer, AutoModelForTableQuestionAnswering, pipeline
 import requests
 import pandas as pd
 
+os.environ['TRANSFORMERS_CACHE'] = '/home/ubuntu/.cache/'
 model = "meta-llama/Llama-2-7b-chat-hf"
 
 llama_2_tokenizer = AutoTokenizer.from_pretrained(model, token='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')
