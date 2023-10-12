@@ -130,13 +130,15 @@
         <div class="relative w-full h-80 bg-white dark:bg-slate-900 rounded-3xl border mb-5 px-4">
             <div class="fixed left-0 right-0 scroll-smooth overflow-scroll h-80">
                 <div class="w-full h-auto flex-col justify-start items-start inline-flex">
+                    {% for chat in chats %}
                     <div class="w-full px-5 py-4 rounded-2xl justify-start items-center gap-4 inline-flex text-slate-500 dark:text-zinc-400">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                         </svg>
-                        <div class="text-lg font-normal leading-relaxed">How to write an impacting ...</div>
+                        <div class="text-lg font-normal leading-relaxed">{{chat['title']}}</div>
                     </div>
-                    <div class="w-full px-5 py-4 rounded-2xl justify-start items-center gap-4 inline-flex text-slate-500 dark:text-zinc-400">
+                    {% endfor %}
+                    <!-- <div class="w-full px-5 py-4 rounded-2xl justify-start items-center gap-4 inline-flex text-slate-500 dark:text-zinc-400">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                         </svg>
@@ -177,7 +179,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                         </svg>
                         <div class="text-slate-500 text-lg font-normal leading-relaxed">What is machine learning</div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!---- Scrollbar customization ---->
@@ -252,7 +254,7 @@
         <!-- Main Center Panel -->
         <div class="flex w-full">
             <!-- Chat Panel -->
-            <div id="chat-area" class="w-full h-auto">
+            <div id="chat-area" style="display: none;" class="w-full h-auto">
                 <!-- <div class="flex flex-row gap-5">
                     <div class="w-10 h-10 rounded-full border border-purple-200">
                         <img alt="" class="w-10 h-10 left-0 top-0 rounded-3xl" src="https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_1280.png" />
@@ -388,9 +390,10 @@
 </div>
 <script src="https://local.xdata.com/assets/css/jquery-3.7.min.js"></script>
 <script>
+  var token = ""
   var wss_protocol = window.location.protocol == "https:" ? "wss://" : "ws://";
   var chatSocket = new WebSocket(
-    wss_protocol + window.location.host + "/chat?token=7f898cb0-1643-4a65-b309-b64d194263a6"
+    wss_protocol + window.location.host + `/chat?token=${token}`
   );
   var messages = [];
 

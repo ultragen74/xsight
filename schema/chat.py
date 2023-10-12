@@ -11,7 +11,14 @@ import uuid
 
 
 class Chat(BaseModel):
+    user_id: str
     token: str
     history: List[Tuple[str, str]]
-    name: str
+    title: Optional[str] = None
     session_start: str = str(datetime.now())
+
+class User(BaseModel):
+    user_id: str = str(uuid.uuid4())
+    email: str
+    password: str
+    created_at: str = str(datetime.now())

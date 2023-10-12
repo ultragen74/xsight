@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Xsight</title>
+    <!-- Scripts -->
+    <link href="{{ url_for('static', path='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', path='stylesheet.css') }}" type="text/css"/>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row flex-nowrap p-3">
+            <!--  Aside start here  -->
+            <aside class="col-md-3 side_bar ml-3">
+                <div class="d-flex flex-column align-items-center align-items-sm-start header_bar">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="{{ url_for('static', path='images/manav-kumar-sinha.png') }}" alt="" class="img-fluid avatar">
+                        </div>
+                        <div class="col-md-9">
+                            <span class="name_bar">Manav kumar sinha</span>
+                            <span class="account_bar">Free account</span>
+                        </div>
+                    </div>
+                    <hr class="sidebar-hr">
+                    <h5 class="recent-conversation">Recent Conversation</h5>
+                </div>
+                <div class="mb-3 container conversion-block">
+                    {% for chat in chats %}
+                    <div class="conversion-item">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 26 26" fill="none">
+                                    <g clip-path="url(#clip0_30_9352)">
+                                        <path d="M21.5782 2.1665H4.60852C3.44185 2.1665 2.4873 3.12105 2.4873 4.28772V23.3786L6.72973 19.1362H21.5782C22.7449 19.1362 23.6994 18.1817 23.6994 17.015V4.28772C23.6994 3.12105 22.7449 2.1665 21.5782 2.1665ZM21.5782 17.015H6.72973L4.60852 19.1362V4.28772H21.5782V17.015Z" fill="#7F74AD"></path>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_30_9352"><rect width="25.4545" height="25.4545" fill="white" transform="translate(0.36377 0.0454102)"></rect></clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="col-md-10">
+                                <a onclick="startChat('{{ chat.token }}')" class="conversion-text">{{chat.title}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="d-flex start-chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                    </svg>
+                    <div class="">
+                        <a onclick="startChat('')" class="start-a-new-chat" type="submit">Start New Chat</a>
+                    </div>
+                </div>
+                <div class="mb-3 grid gap-3 settings">
+                    <div class="d-flex gap-3 align-items-center align-self-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                        </svg>
+                        <div class="flex-fill">
+                            <a class="font-block">Clear all conversations</a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center align-self-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                        </svg>
+                        <div class="flex-fill">
+                            <a class="font-block">Switch to Dark Mode</a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center align-self-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                        </svg>
+                        <div class="flex-fill">
+                            <a class="font-block">Upgrade to Pro Account</a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center align-self-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                            <g clip-path="url(#clip0_30_9338)">
+                                <path d="M20.5161 20.3784H5.6676V5.5299H13.0918V3.40869H5.6676C4.49033 3.40869 3.54639 4.36324 3.54639 5.5299V20.3784C3.54639 21.5451 4.49033 22.4996 5.6676 22.4996H20.5161C21.6828 22.4996 22.6373 21.5451 22.6373 20.3784V12.9541H20.5161V20.3784ZM15.2131 3.40869V5.5299H19.0206L8.59487 15.9557L10.0903 17.4511L20.5161 7.02536V10.8329H22.6373V3.40869H15.2131Z" fill="#2A1D71"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_30_9338">
+                                    <rect width="25.4545" height="25.4545" fill="white" transform="translate(0.36377 0.227051)"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <div class="flex-fill">
+                            <a class="font-block">Updates &amp; FAQ</a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center align-self-center text-pink-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
+                        </svg>
+                        <div class="flex-fill">
+                            <a href="#" class="font-logout text-pink-600">Log out</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!--  Aside ends here  -->
+            <!--   Main Section Start  -->
+            <main class="col-md-9 pt-2">
+                <div class="d-flex justify-content-between w-100 py-2 px-3 app-version bg-white bg-opacity-50 rounded-5 shadow border border-3 border-white mb-4">
+                    <div class="d-flex version">
+                        Decoding X
+                    </div>
+                    <div class="d-flex align-items-center w-full gap-2">
+                        <a href="">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                            </svg>
+                        </a>
+                        <a href="">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+                            </svg>
+                        </a>
+                        <a href="">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div id="chat-area" class="col-lg-9 col-md-8">
+                        <!--   Question    -->
+                        <!--   Question    -->
+                        <!--  Answer generated by AI -->
+                        <!--  Answer generated by AI -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 collapse show bg-white rounded-4" id="rightSidebar">
+                        <div class="container-fluid">
+                            <div class="relative rounded-3 border border-1 border-light row">
+                                <h4 class="fs-5 fw-bold font-family-Helvetica Neue m-0 px-3 py-2 header">
+                                    Source Data
+                                </h4>
+                                <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                        <a class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            Product Table
+                                        </a>
+                                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Sales Table
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Category Table
+                                            </button>
+                                        </h2>
+                                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                                Data
+                                            </button>
+                                        </h2>
+                                        <div id="collapseFour" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <p class="absolute fs-6 fw-normal text-break">
+                                                    const express = require('express');  const bodyParser = require('body-parser');  const mongoose = require('mongoose');  // Replace 'your_database_connection_string' with your actual MongoDB connection string  const dbConnectionString = 'your_database_connection_string';  mongoose.connect(dbConnectionString, { useNewUrlParser: true, useUnifiedTopology: true })    .then(() =&gt; console.log('Connected to MongoDB'))    .catch((err) =&gt; console.error('MongoDB connection error:', err));
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  Regenerate Response -->
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="d-flex justify-content-end py-3">
+                                <div class="flex-fill regenerate-response rounded-5 border border-1 row justify-content-center align-items-center">
+                                    <a class="fs-6 fw-bold m-0 py-2">
+                                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.45879 14C5.5337 14 3.89262 13.318 2.53557 11.9541C1.17852 10.5902 0.5 8.94077 0.5 7.00591C0.5 5.07105 1.17852 3.41969 2.53557 2.05181C3.89262 0.683937 5.5337 0 7.45879 0C8.68606 0 9.76558 0.248604 10.6973 0.745813C11.6291 1.24304 12.433 1.93395 13.1091 2.81856V0.698946C13.1091 0.498611 13.1733 0.332032 13.3015 0.199211C13.4297 0.0664032 13.5974 0 13.8046 0C14.0039 0 14.1696 0.0664032 14.3018 0.199211C14.4339 0.332032 14.5 0.498611 14.5 0.698946V4.92544C14.5 5.16206 14.4194 5.3594 14.2582 5.51745C14.097 5.67551 13.8987 5.75455 13.6633 5.75455H9.44638C9.25038 5.75455 9.08744 5.68814 8.95756 5.55531C8.82767 5.42251 8.76272 5.25593 8.76272 5.05558C8.76272 4.85859 8.82879 4.69483 8.96093 4.56428C9.09308 4.43373 9.25882 4.36846 9.45814 4.36846H12.2145C11.679 3.56272 11.0171 2.91155 10.2286 2.41494C9.44017 1.91834 8.51689 1.67003 7.45879 1.67003C5.97679 1.67003 4.72146 2.18696 3.69281 3.22083C2.66416 4.2547 2.14984 5.51639 2.14984 7.00591C2.14984 8.49543 2.66416 9.75713 3.69281 10.791C4.72146 11.8249 5.97679 12.3418 7.45879 12.3418C8.43734 12.3418 9.35431 12.0898 10.2097 11.586C11.0651 11.0821 11.7189 10.3981 12.171 9.53416C12.2846 9.33995 12.4474 9.19888 12.6596 9.11094C12.8717 9.02298 13.0807 9.02572 13.2863 9.11916C13.502 9.20471 13.6494 9.34743 13.7285 9.54735C13.8076 9.74728 13.8006 9.94675 13.7077 10.1458C13.1269 11.3258 12.2759 12.2632 11.1546 12.958C10.0333 13.6527 8.80136 14 7.45879 14Z" fill="#2A1D71"/>
+                                        </svg>
+                                        Regenerate response
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  Regenerate Response -->
+                <!--  Question input  -->
+                <div class="container-fluid py-3" id="question-input">
+                    <div class="input-group px-1 py-1 bg-white rounded-5 border border-1 border-white border-opacity-25 align-items-center">
+                        <input type="text" id="chat-message-input" aria-label="message-input" aria-describedby="basic-addon2" class="form-control chat-input-message" placeholder="Example : “Show me total candy sale report of previous month”">
+                        <button class="input-group-text" id="basic-addon2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!--  Question input  -->
+            </main>
+            <!--   Main Section Ends  -->
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='js/bootstrap.min.js') }}" type="application/javascript"></script>
+    <script>
+        var global_token
+        var wss_protocol = window.location.protocol == "https:" ? "wss://" : "ws://";
+        var chatSocket = new WebSocket(
+            wss_protocol + window.location.host + `/chat?token={{token}}`);
+        //Function to generate token for new chat
+        function set_token(token){
+            global_token = token;
+            console.log("global token",global_token)
+        }
+        function generate_token(){
+            // var token
+            console.log('{{user_id}}')
+            let token = fetch(`${window.location.protocol}//${window.location.host}/token?user_id={{user_id}}`, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                        })
+                        .then(response => response.json())
+                        .then(response => {
+                            // console.log(response);
+                            set_token(response.token);
+                        })
+        }
+
+        var messages = [];      
+      //   chatSocket.onopen = function (e) {
+      //     document.querySelector("#chat-header").innerHTML =
+      //       "Welcome to Django Chatbot";
+      //   };
+        function startChat(token){
+            if(token === ""){
+                generate_token();
+                document.querySelector("#chat-area").innerHTML = ""
+            }
+            else{
+                chats = JSON.parse('{{ chats|tojson }}')
+                console.log(chats);
+                for(let i=0; i<chats.length; i++){
+                    if(chats[i].token == token){
+                        var chat = chats[i];
+                    }
+                }
+                var history = chat.history
+                var chat_html = '';
+                for(let i=0; i<history.length; i++){
+                    chat_html += `<div class="row align-items-center">
+                            <div class="col-md-1">
+                                <img alt="" class="chat-avatar" src="{{ url_for('static', path='images/manav-kumar-sinha.png') }}">
+                            </div>
+                            <div class="col-md-11">
+                                <div class="d-flex w-100 justify-content-between question">
+                                    <p class="">${history[i][0]}</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-1 pt-3">
+                            <img class="chat-avatar" src="{{ url_for('static', path='images/manav-kumar-sinha.png') }}" alt="">
+                        </div>
+                        <div class="col-md-11 pt-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        ${history[i][1]}
+                                    </h5>
+                                </div>
+
+                                <div class="d-flex justify-content-end">
+                                    <div class="flex-fill py-3">
+                                        <a class="px-1 py-1 quick_links rounded-5 align-items-center text-decoration-none" data-bs-toggle="collapse" href="#rightSidebar" role="button" aria-expanded="false" aria-controls="rightSidebar">
+                                            <span class="fs-6 fw-medium font-family-Inter col-9 m-0 px-3 py-2">
+                                                Source Data
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="flex-fill py-3">
+                                        <a class="px-1 py-1 quick_links rounded-5 align-items-center text-decoration-none">
+                                            <span class="fs-6 fw-medium font-family-Inter col-9 m-0 px-3 py-2">
+                                                Quick Insights
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="flex-fill py-3">
+                                        <a class="px-1 py-1 quick_links rounded-5 align-items-center text-decoration-none">
+                                            <span class="fs-6 fw-medium font-family-Inter col-9 m-0 px-3 py-2">
+                                                Dashboard
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="flex-fill py-3">
+                                        <a class="px-1 py-1 quick_links rounded-5 align-items-center text-decoration-none">
+                                            <span class="fs-6 fw-medium font-family-Inter col-9 m-0 px-3 py-2">
+                                                Beyond Insights
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        `
+                }
+                document.querySelector("#chat-area").innerHTML = chat_html
+            }
+            setTimeout(
+                function(){
+                    if(token == ""){
+                    chatSocket = new WebSocket(
+                        wss_protocol + window.location.host + `/chat?token=${global_token}`
+                    );
+                }
+                else{
+                    chatSocket = new WebSocket(
+                        wss_protocol + window.location.host + `/chat?token=${token}`
+                    );
+                }
+            chatSocket.onmessage = function (e) {
+                var message = JSON.parse(e.data);
+                // var message = data["text"];
+                // console.log(data);
+                messages.push(message);
+            
+                var output_html = '';
+                if (message.source == "bot"){
+                    output_html +=
+                        `<div class="row">
+                        <div class="col-md-1 pt-3">
+                            <img class="chat-avatar" src="{{ url_for('static', path='images/manav-kumar-sinha.png') }}" alt="">
+                        </div>
+                        <div class="col-md-11 pt-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        ${message.msg}
+                                    </h5>
+                                </div>
+
+                                <div class="d-flex justify-content-end">
+                                    <div class="flex-fill py-3">
+                                        <a class="px-1 py-1 quick_links rounded-5 align-items-center text-decoration-none" data-bs-toggle="collapse" href="#rightSidebar" role="button" aria-expanded="false" aria-controls="rightSidebar">
+                                            <span class="fs-6 fw-medium font-family-Inter col-9 m-0 px-3 py-2">
+                                                Source Data
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="flex-fill py-3">
+                                        <a class="px-1 py-1 quick_links rounded-5 align-items-center text-decoration-none">
+                                            <span class="fs-6 fw-medium font-family-Inter col-9 m-0 px-3 py-2">
+                                                Quick Insights
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="flex-fill py-3">
+                                        <a class="px-1 py-1 quick_links rounded-5 align-items-center text-decoration-none">
+                                            <span class="fs-6 fw-medium font-family-Inter col-9 m-0 px-3 py-2">
+                                                Dashboard
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="flex-fill py-3">
+                                        <a class="px-1 py-1 quick_links rounded-5 align-items-center text-decoration-none">
+                                            <span class="fs-6 fw-medium font-family-Inter col-9 m-0 px-3 py-2">
+                                                Beyond Insights
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                }
+                // });
+                // str += "</ul>";
+                // document.querySelector("#chat-log").innerHTML = str;
+                // console.log(message);
+                document.querySelector("#chat-area").innerHTML += output_html;
+                };
+                }
+                ,
+                2000
+            )
+            
+            
+                chatSocket.onclose = function (e) {
+                alert("Socket closed unexpectedly, please reload the page.");
+                };
+        }
+      
+        chatSocket.onmessage = function (e) {
+          var message = JSON.parse(e.data);
+          // var message = data["text"];
+          // console.log(data);
+          messages.push(message);
+      
+          var output_html = '';
+          // messages.forEach(function (msg) {
+          //   output_html += `<li class="flex ${
+          //     msg.source == "bot" ? "justify-start" : "justify-end"
+          //   }">
+          //   <div class="relative max-w-xl px-4 py-2 rounded-lg shadow-md
+          //     ${
+          //       msg.source == "bot"
+          //         ? "text-gray-700 bg-white border border-gray-200"
+          //         : "bg-blue-600 text-white"
+          //     }">
+          //     <span className="block font-normal">${msg.msg}</span></div></li>`;
+          console.log(message);
+            if (message.source == "bot"){
+                    output_html +=
+                        `<div class="row">
+                        <div class="col-md-1 pt-3">
+                            <img class="chat-avatar" src="{{ url_for('static', path='images/manav-kumar-sinha.png') }}" alt="">
+                        </div>
+                        <div class="col-md-11 pt-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        ${message.msg}
+                                    </h5>
+                                </div>
+
+                                <div class="d-flex justify-content-end">
+                                    <div class="flex-fill py-3">
+                                        <a class="px-1 py-1 quick_links rounded-5 align-items-center text-decoration-none" data-bs-toggle="collapse" href="#rightSidebar" role="button" aria-expanded="false" aria-controls="rightSidebar">
+                                            <span class="fs-6 fw-medium font-family-Inter col-9 m-0 px-3 py-2">
+                                                Source Data
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="flex-fill py-3">
+                                        <a class="px-1 py-1 quick_links rounded-5 align-items-center text-decoration-none">
+                                            <span class="fs-6 fw-medium font-family-Inter col-9 m-0 px-3 py-2">
+                                                Quick Insights
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="flex-fill py-3">
+                                        <a class="px-1 py-1 quick_links rounded-5 align-items-center text-decoration-none">
+                                            <span class="fs-6 fw-medium font-family-Inter col-9 m-0 px-3 py-2">
+                                                Dashboard
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="flex-fill py-3">
+                                        <a class="px-1 py-1 quick_links rounded-5 align-items-center text-decoration-none">
+                                            <span class="fs-6 fw-medium font-family-Inter col-9 m-0 px-3 py-2">
+                                                Beyond Insights
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+              }
+          // });
+          // str += "</ul>";
+          // document.querySelector("#chat-log").innerHTML = str;
+          // console.log(message);
+          document.querySelector("#chat-area").innerHTML += output_html;
+        };
+      
+        chatSocket.onclose = function (e) {
+          alert("Socket closed unexpectedly, please reload the page.");
+        };
+      
+        document.querySelector("#chat-message-input").focus();
+        document.querySelector("#chat-message-input").onkeyup = function (e) {
+          if (e.keyCode === 13) {
+            // enter, return
+            document.querySelector("#basic-addon2").click();
+          }
+        };
+    //     document.onkeypress = function(e) {
+    //       if(e.keyCode === 13) //if enter pressed
+    //       {
+    //           document.querySelector("#basic-addon2").click();
+    //       }
+      
+    //   }
+      
+        document.querySelector("#basic-addon2").onclick = function (e) {
+          var messageInputDom = document.querySelector("#chat-message-input");
+          var message = messageInputDom.value;
+          input_html = `<div class="row align-items-center">
+                            <div class="col-md-1">
+                                <img alt="" class="chat-avatar" src="{{ url_for('static', path='images/manav-kumar-sinha.png') }}">
+                            </div>
+                            <div class="col-md-11">
+                                <div class="d-flex w-100 justify-content-between question">
+                                    <p class="">${message}</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>`
+      
+          document.querySelector("#chat-area").innerHTML += input_html;
+          chatSocket.send(
+            JSON.stringify({
+              msg: message,
+              source: "user"
+            })
+          );
+      
+          messageInputDom.value = "";
+        };
+      </script>
+</body>
+
+</html>

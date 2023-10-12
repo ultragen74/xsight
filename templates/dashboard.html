@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Xsight</title>
+    <!-- Scripts -->
+    <!-- Scripts -->
+    <link href="{{ url_for('static', path='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', path='stylesheet.css') }}" type="text/css"/>
+    <!-- Only for using jsVector Map   -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/jquery-jvectormap-2.0.5.css') }}" type="text/css"/>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row flex-nowrap p-3">
+        <!--  Aside start here  -->
+        <aside class="col-md-3">
+            <div class="d-flex flex-column align-items-center align-items-sm-start header_bar">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="{{ url_for('static', path='images/manav-kumar-sinha.png') }}" alt="" class="img-fluid avatar">
+                    </div>
+                    <div class="col-md-9">
+                        <span class="name_bar">Manav kumar sinha</span>
+                        <span class="account_bar">Free account</span>
+                    </div>
+                </div>
+                <hr class="sidebar-hr">
+                <h5 class="recent-conversation">Recent Conversation</h5>
+            </div>
+            <div class="mb-3 container conversion-block">
+                <div class="conversion-item">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 26 26" fill="none">
+                                <g clip-path="url(#clip0_30_9352)">
+                                    <path d="M21.5782 2.1665H4.60852C3.44185 2.1665 2.4873 3.12105 2.4873 4.28772V23.3786L6.72973 19.1362H21.5782C22.7449 19.1362 23.6994 18.1817 23.6994 17.015V4.28772C23.6994 3.12105 22.7449 2.1665 21.5782 2.1665ZM21.5782 17.015H6.72973L4.60852 19.1362V4.28772H21.5782V17.015Z" fill="#7F74AD"></path>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_30_9352"><rect width="25.4545" height="25.4545" fill="white" transform="translate(0.36377 0.0454102)"></rect></clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="col-md-10">
+                            <a class="conversion-text">How to write an impacting</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="conversion-item">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                            </svg>
+                        </div>
+                        <div class="col-md-10">
+                            <a class="conversion-text">Web accessibility.</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="conversion-item">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 26 26"
+                                 fill="none">
+                                <g clip-path="url(#clip0_30_9352)">
+                                    <path
+                                            d="M21.5782 2.1665H4.60852C3.44185 2.1665 2.4873 3.12105 2.4873 4.28772V23.3786L6.72973 19.1362H21.5782C22.7449 19.1362 23.6994 18.1817 23.6994 17.015V4.28772C23.6994 3.12105 22.7449 2.1665 21.5782 2.1665ZM21.5782 17.015H6.72973L4.60852 19.1362V4.28772H21.5782V17.015Z"
+                                            fill="#7F74AD"></path>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_30_9352">
+                                        <rect width="25.4545" height="25.4545" fill="white"
+                                              transform="translate(0.36377 0.0454102)"></rect>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="col-md-10">
+                            <a class="conversion-text">Design inspiration</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="conversion-item">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 26 26"
+                                 fill="none">
+                                <g clip-path="url(#clip0_30_9352)">
+                                    <path
+                                            d="M21.5782 2.1665H4.60852C3.44185 2.1665 2.4873 3.12105 2.4873 4.28772V23.3786L6.72973 19.1362H21.5782C22.7449 19.1362 23.6994 18.1817 23.6994 17.015V4.28772C23.6994 3.12105 22.7449 2.1665 21.5782 2.1665ZM21.5782 17.015H6.72973L4.60852 19.1362V4.28772H21.5782V17.015Z"
+                                            fill="#7F74AD"></path>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_30_9352">
+                                        <rect width="25.4545" height="25.4545" fill="white"
+                                              transform="translate(0.36377 0.0454102)"></rect>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="col-md-10">
+                            <a class="conversion-text">What is machine learning...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex start-chat">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                </svg>
+                <div class="">
+                    <a class="start-a-new-chat" type="submit">Start New Chat</a>
+                </div>
+            </div>
+            <div class="mb-3 grid gap-3 settings">
+                <div class="d-flex gap-3 align-items-center align-self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                    </svg>
+                    <div class="flex-fill">
+                        <a class="font-block">Clear all conversations</a>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center align-self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                    </svg>
+                    <div class="flex-fill">
+                        <a class="font-block">Switch to Dark Mode</a>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center align-self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                    </svg>
+                    <div class="flex-fill">
+                        <a class="font-block">Upgrade to Pro Account</a>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center align-self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                        <g clip-path="url(#clip0_30_9338)">
+                            <path d="M20.5161 20.3784H5.6676V5.5299H13.0918V3.40869H5.6676C4.49033 3.40869 3.54639 4.36324 3.54639 5.5299V20.3784C3.54639 21.5451 4.49033 22.4996 5.6676 22.4996H20.5161C21.6828 22.4996 22.6373 21.5451 22.6373 20.3784V12.9541H20.5161V20.3784ZM15.2131 3.40869V5.5299H19.0206L8.59487 15.9557L10.0903 17.4511L20.5161 7.02536V10.8329H22.6373V3.40869H15.2131Z" fill="#2A1D71"></path>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_30_9338">
+                                <rect width="25.4545" height="25.4545" fill="white" transform="translate(0.36377 0.227051)"></rect>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    <div class="flex-fill">
+                        <a class="font-block">Updates &amp; FAQ</a>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center align-self-center text-pink-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
+                    </svg>
+                    <div class="flex-fill">
+                        <a href="#" class="font-logout text-pink-600">Log out</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="col-md-9 py-3">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="breadcrumb">
+                        <div class="breadcrumb-item">Candies Sales Report / Financial Year 2022</div>
+                        <div class="breadcrumb-item active">Demand Based Insights</div>
+                    </div>
+                </div>
+                <div class="col-md-6 align-items-center">
+                    <div class="d-flex gap-1 justify-content-between align-items-center align-self-center">
+                        <div class="d-flex w-50 gap-3 py-2 px-3 justify-content-between report-settings">
+                            <div class="d-flex align-items-center w-full gap-1">
+                                <a href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                    </svg>
+                                </a>
+                                <a href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+                                    </svg>
+                                </a>
+                                <a href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>FY 2022</option>
+                                <option value="1">FY 2021</option>
+                                <option value="2">FY 2020</option>
+                                <option value="3">FY 2019</option>
+                            </select>
+                        </div>
+                        <div class="d-flex w-50 search-bar mt-2 position-relative">
+                            <div class="input-group mb-3">
+                                <button type="submit" class="input-group-text" id="basic-addon2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-pink-600">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                    </svg>
+                                </button>
+                                <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container text-center">
+                <div class="row g-1">
+                    <div class="col-md-3">
+                        <div class="medium-user gy-4">
+                            <div class="mb-3 total-sales-item">Candies</div>
+                            <div class="mb-3 image-holder">
+                                <img class="img-fluid" alt="" src="{{ url_for('static', path='images/candies.png') }}" />
+                            </div>
+                            <div class="mb-3 d-block">
+                                <div class="total-sales-title">Total units sold </div>
+                                <div class="total-sales">44175</div>
+                            </div>
+                            <div class="mb-3 d-flex gap-y-4 justify-content-between">
+                                <div class="flex-fill">
+                                    <div class="sales-table-heading">Daily Average</div>
+                                    <div class="sales-table-data">28</div>
+                                </div>
+                                <div class="flex-fill">
+                                    <div class="sales-table-heading">Last Month</div>
+                                    <div class="sales-table-data">900</div>
+                                </div>
+                                <div class="flex-fill">
+                                    <div class="sales-table-heading">Monthly Average</div>
+                                    <div class="sales-table-data">845</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row g-1 mb-2">
+                            <div class="col-md-4">
+                                <div class="report-block active">
+                                    <div class="d-block text-start">
+                                        <div class="title">Average Regular Price</div>
+                                        <div class="text" style="">$12.50</div>
+                                    </div>
+                                    <div id="sparkChartSocial" class="Chart" style="width: 5.5rem; height: 39.50px;"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="report-block">
+                                    <div class="circle">
+                                        <img src="images/solar_wallet-money-bold.svg" alt="" class="img-fluid"/>
+                                    </div>
+                                    <div class="d-block text-start">
+                                        <div class="title">Revenue this month</div>
+                                        <div class="text">$350.40</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="report-block">
+                                    <div class="circle">
+                                        <img src="images/solar_money-bag-bold.svg" alt="" class="img-fluid"/>
+                                    </div>
+                                    <div class="d-block text-start">
+                                        <div class="title">Spent this month</div>
+                                        <div class="text">$350.40</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-1">
+                            <div class="col-md-8 col-sm-6">
+                                <div class="chart-card">
+                                    <div class="chart-header justify-content-between">
+                                        <div class="d-flex flex-column flex-grow-1 text-start">
+                                            <div class="chart-title">$1365.5</div>
+                                            <div class="d-flex gap-1 align-items-center">
+                                                <div class="chart-sub-title">Total Revenue</div>
+                                                <div class="percentage-effect">
+                                                    <div class="">+2.45%</div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex">
+                                            <div class="select-year">Revenue - FY 2022</div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-body">
+                                        <div class="apex-chart" id="revenueChart"></div>
+                                    </div>
+                                    <div class="chart-footer"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="chart-card h-100">
+                                    <div class="chart-header justify-content-between">
+                                        <div class="d-flex flex-column flex-grow-1 text-start">
+                                            <div class="chart-single-title">Last 5years' Revenue</div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-body">
+                                        <div class="apex-chart" id="barChart"></div>
+                                    </div>
+                                    <div class="chart-footer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 my-2">
+                        <div class="row g-1">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="chart-card">
+                                    <div class="chart-header justify-content-between">
+                                        <div class="d-flex flex-column flex-grow-1 text-start">
+                                            <div class="chart-single-title">Future sales prediction</div>
+                                            <div class="d-flex gap-1 align-items-center">
+                                                <div class="chart-sub-title">Total units sold per months </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex">
+                                            <div class="select-year">future sales predictions</div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-body">
+                                        <div class="apex-chart" id="predictionChart"></div>
+                                    </div>
+                                    <div class="chart-footer"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="chart-card h-100">
+                                    <div class="chart-header justify-content-between">
+                                        <div class="d-flex flex-column flex-grow-1 text-start">
+                                            <div class="chart-single-title">Map distribution</div>
+                                            <div class="d-flex gap-1 align-items-center">
+                                                <div class="chart-sub-title">Avaerage annual sales across the globe</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-body">
+                                        <div class="apex-chart" id="world-map"></div>
+                                    </div>
+                                    <div class="chart-footer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 my-2">
+                        <div class="row g-1">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="chart-card">
+                                    <div class="chart-header justify-content-between">
+                                        <div class="d-flex flex-column flex-grow-1 text-start">
+                                            <div class="chart-single-title">Candies Report</div>
+                                        </div>
+                                        <div class="flex">
+                                            <div class="select-year">This Month</div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-body">
+                                        <div class="apex-chart" id="radialBarChart"></div>
+                                    </div>
+                                    <div class="chart-footer"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-6">
+                                <div class="chart-card h-100">
+                                    <div class="chart-header justify-content-between">
+                                        <div class="d-flex flex-column flex-grow-1 text-start">
+                                            <div class="chart-single-title">Detailed Candies sales report</div>
+                                        </div>
+                                        <div class="flex">
+                                            <div class="select-year">This Month</div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-body">
+                                        <table class="table">
+                                            <thead class="table-theme">
+                                            <tr>
+                                                <th scope="col">No.</th>
+                                                <th scope="col">Item</th>
+                                                <th scope="col">Store</th>
+                                                <th scope="col">Type</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Earnings</th>
+                                                <th scope="col">Stock</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Kitkat</td>
+                                                <td>Bogisich-Huel</td>
+                                                <td>Fruit & Nuts</td>
+                                                <td>$6</td>
+                                                <td>10</td>
+                                                <td>$60</td>
+                                                <td><div class="stock-status success">500</div> </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Snicker</td>
+                                                <td>Bogisich-Huel</td>
+                                                <td>Fruit & Nuts</td>
+                                                <td>$8</td>
+                                                <td>10</td>
+                                                <td>$80</td>
+                                                <td><div class="stock-status danger">40</div> </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="chart-footer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="application/javascript" src="{{ url_for('static', path='js/dashboard.js') }}"></script>
+<script type="application/javascript" src="{{ url_for('static', path='js/dashboard.js') }}"></script>
+<!-- Let's add Jquery based map -->
+<script type="application/javascript" src="{{ url_for('static', path='js/jquery-3.7.min.js') }}"></script>
+<script src="js/jquery-jvectormap-2.0.5.min.js"></script>
+<script type="application/javascript" src="{{ url_for('static', path='js/world.js') }}"></script>
+<!-- USA will be used in Specific condition -->
+<!--<script type="application/javascript" src="js/usa.js"></script>-->
+<script>
+    $(function(){
+        $('#world-map').vectorMap({map: 'world_mill'});
+    });
+</script>
+
+</body>
+
+</html>

@@ -29,7 +29,7 @@ model = AutoModelForCausalLM.from_pretrained(
 
 
 DEFAULT_SYSTEM_PROMPT = """\
-You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.  Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.
+You are a helpful, respectful and honest assistant who can do arithmetic operation on table columns. Always answer accurate for arithmetic operations and as helpfully as possible, while being safe.  Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are correct based upon the information in table.
 If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\
 """
 def get_prompt(message: str, chat_history: List[Tuple[str, str]],
@@ -94,10 +94,12 @@ def chat(message, history_with_input):
     #     yield history + [(message, '')]
     for response in output:
         pass
-    return history + [(message, response)]
+    if " Answer the following question using following table - " in message:
+        message = message.split(" Answer the following question using following table - ")[0]
+    return history + [[message, response]]
 
 def generate_response(user_msg, history, df):
-    history.append((user_msg, ''))
+    history.append([user_msg, ''])
 #     table_text = f"answer the upcoming questions using following table {sales_100_rows}"
 #     table_text = ""
     result_tapas = pipe_tapas(table=df.astype(str), query=user_msg)
