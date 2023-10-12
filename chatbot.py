@@ -30,7 +30,7 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 def get_cuda_memeory():
     mem_info = torch.cuda.mem_get_info()
-    print("available cuda memory:", mem_info[0]/mem_info)
+    print("available cuda memory:", mem_info[0]/mem_info[1])
 
 get_cuda_memeory()
 
