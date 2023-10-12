@@ -14,6 +14,7 @@ from schema.chat import Chat, User
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from redis_setup.cache import Cache
+print("will load model now")
 from xsight.chatbot import generate_response
 import pandas as pd
 from pymongo import MongoClient

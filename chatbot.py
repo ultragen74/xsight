@@ -28,8 +28,11 @@ model = AutoModelForCausalLM.from_pretrained(
     token = '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',
     # load_in_4bit=True
 )
+def get_cuda_memeory():
+    mem_info = torch.cuda.mem_get_info()
+    print("available cuda memory:", mem_info[0]/mem_info)
 
-print("available cuda memory:", torch.cuda.mem_get_info())
+get_cuda_memeory()
 
 DEFAULT_SYSTEM_PROMPT = """\
 You are a helpful, respectful and honest assistant who can do arithmetic operation on table columns. Always answer accurate for arithmetic operations and as helpfully as possible, while being safe.  Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are correct based upon the information in table.
@@ -89,9 +92,9 @@ def run(message: str,
 
 def chat(message, history_with_input):
     history = history_with_input[:-1]
-    print("available cuda memory:", torch.cuda.mem_get_info())
+    get_cuda_memeory()
     output = run(message, history)
-    print("available cuda memory:", torch.cuda.mem_get_info())
+    get_cuda_memeory()
     # try:
     #     first_response = next(generator)
     #     yield history + [(message, first_response)]
