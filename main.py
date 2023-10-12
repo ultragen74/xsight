@@ -1,3 +1,6 @@
+import sys
+
+sys.dont_write_bytecode = True
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 import uvicorn
