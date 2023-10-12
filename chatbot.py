@@ -29,6 +29,7 @@ model = AutoModelForCausalLM.from_pretrained(
     # load_in_4bit=True
 )
 
+print("available cuda memory:", torch.cuda.mem_get_info())
 
 DEFAULT_SYSTEM_PROMPT = """\
 You are a helpful, respectful and honest assistant who can do arithmetic operation on table columns. Always answer accurate for arithmetic operations and as helpfully as possible, while being safe.  Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are correct based upon the information in table.
@@ -60,7 +61,7 @@ def run(message: str,
         top_p: float = 0.95,
         top_k: int = 50) -> Iterator[str]:
     prompt = get_prompt(message, chat_history, system_prompt)
-    inputs = llama_2_tokenizer([prompt], return_tensors='pt', add_special_tokens=False)#.to('cuda')
+    inputs = llama_2_tokenizer([prompt], return_tensors='pt', add_special_tokens=False).to('cuda')
 
 #     print("token length",len(inputs.tokens()))
     streamer = TextIteratorStreamer(llama_2_tokenizer,
@@ -88,7 +89,9 @@ def run(message: str,
 
 def chat(message, history_with_input):
     history = history_with_input[:-1]
+    print("available cuda memory:", torch.cuda.mem_get_info())
     output = run(message, history)
+    print("available cuda memory:", torch.cuda.mem_get_info())
     # try:
     #     first_response = next(generator)
     #     yield history + [(message, first_response)]
