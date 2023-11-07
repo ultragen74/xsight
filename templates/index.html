@@ -42,7 +42,7 @@
                                 </svg>
                             </div>
                             <div class="col-md-10">
-                                <a onclick="startChat('{{ chat.token }}')" class="conversion-text">{{chat.title}}</a>
+                                <a onclick="startChat('{{ chat.token }}')" class="conversion-text">{{ chat.title }}</a>
                             </div>
                         </div>
                     </div>
@@ -199,7 +199,7 @@
                     </div>
                 </div>
                 <!--  Regenerate Response -->
-                <div class="container-fluid">
+                <!-- <div class="container-fluid">
                     <div class="row justify-content-center">
                         <div class="col-md-6 col-lg-3">
                             <div class="d-flex justify-content-end py-3">
@@ -214,16 +214,19 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!--  Regenerate Response -->
                 <!--  Question input  -->
                 <div class="container-fluid py-3" id="question-input">
                     <div class="input-group px-1 py-1 bg-white rounded-5 border border-1 border-white border-opacity-25 align-items-center">
                         <input type="text" id="chat-message-input" aria-label="message-input" aria-describedby="basic-addon2" class="form-control chat-input-message" placeholder="Example : “Show me total candy sale report of previous month”">
                         <button class="input-group-text" id="basic-addon2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <svg id="normal_btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
                             </svg>
+                            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+                        <dotlottie-player id="loading_btn" style="display: none;" src="https://lottie.host/18f4d891-4ad7-4fd6-8ff3-383b366efd2b/ysUlGDRoc6.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
                         </button>
                     </div>
                 </div>
@@ -272,6 +275,7 @@
                 document.querySelector("#chat-area").innerHTML = ""
             }
             else{
+                // console.log('{{chats|tojson}}')
                 chats = JSON.parse('{{ chats|tojson }}')
                 console.log(chats);
                 for(let i=0; i<chats.length; i++){
@@ -363,7 +367,12 @@
                 messages.push(message);
             
                 var output_html = '';
+                console.log('message -> ',message)
                 if (message.source == "bot"){
+                    document.getElementById("normal_btn").style.display = "block";
+                    document.getElementById("loading_btn").style.display = "none";
+                    document.getElementById("basic-addon2").disabled = false;
+                    if(document.querySelector(`#${message.id}`) === null){
                     output_html +=
                         `<div class="row">
                         <div class="col-md-1 pt-3">
@@ -372,7 +381,7 @@
                         <div class="col-md-11 pt-3">
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <h5 class="card-title">
+                                    <h5 id="${message.id}" class="card-title">
                                         ${message.msg}
                                     </h5>
                                 </div>
@@ -410,12 +419,17 @@
                             </div>
                         </div>
                     </div>`;
+                    document.querySelector("#chat-area").innerHTML += output_html;
+                }
+                else{
+                    document.querySelector(`#${message.id}`).innerHTML += message.msg;
+                }
                 }
                 // });
                 // str += "</ul>";
                 // document.querySelector("#chat-log").innerHTML = str;
                 // console.log(message);
-                document.querySelector("#chat-area").innerHTML += output_html;
+                // document.querySelector("#chat-area").innerHTML += output_html;
                 };
                 }
                 ,
@@ -448,6 +462,10 @@
           //     <span className="block font-normal">${msg.msg}</span></div></li>`;
           console.log(message);
             if (message.source == "bot"){
+                document.getElementById("normal_btn").style.display = "block";
+                document.getElementById("loading_btn").style.display = "none";
+                document.getElementById("basic-addon2").disabled = false;
+                if(document.querySelector(`#${message.id}`) === null){
                     output_html +=
                         `<div class="row">
                         <div class="col-md-1 pt-3">
@@ -456,7 +474,7 @@
                         <div class="col-md-11 pt-3">
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <h5 class="card-title">
+                                    <h5 id="${message.id}" class="card-title">
                                         ${message.msg}
                                     </h5>
                                 </div>
@@ -494,12 +512,17 @@
                             </div>
                         </div>
                     </div>`;
+                    document.querySelector("#chat-area").innerHTML += output_html;
+                }
+                else{
+                    console.log(document.querySelector(`#${message.id}`).innerHTML)
+                    document.querySelector(`#${message.id}`).innerHTML += message.msg;
+                }
               }
           // });
           // str += "</ul>";
           // document.querySelector("#chat-log").innerHTML = str;
           // console.log(message);
-          document.querySelector("#chat-area").innerHTML += output_html;
         };
       
         chatSocket.onclose = function (e) {
@@ -547,6 +570,9 @@
           );
       
           messageInputDom.value = "";
+          document.getElementById("normal_btn").style.display = "none";
+          document.getElementById("loading_btn").style.display = "block";
+          document.getElementById("basic-addon2").disabled = true;
         };
       </script>
 </body>

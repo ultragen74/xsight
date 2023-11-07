@@ -422,6 +422,7 @@
     //     <span className="block font-normal">${msg.msg}</span></div></li>`;
     console.log(message);
         if (message.source == "bot"){
+            if(document.querySelector(`#${message.id}`) === null){
                 output_html +=
                     `<div class="flex flex-row gap-5">
                     <div class="w-10 h-10 flex items-center justify-center bg-gradient-to-t from-pink-600 to-violet-900 rounded-full">
@@ -431,18 +432,23 @@
                     </div>
                     <div class="w-full p-5 bg-white rounded-2xl border border-violet-100 dark:border-zinc-600">
                         <div class="w-full mb-7">
-                         <span class="text-violet-950 dark:text-slate-300 text-lg font-normal leading-normal">
+                         <span id="${message.id}" class="text-violet-950 dark:text-slate-300 text-lg font-normal leading-normal">
                             ${message.msg}
                          </span>
                         </div>
                     </div>
                 </div>`;
+                document.querySelector("#chat-area").innerHTML += output_html;
+            }
+            else{
+                document.querySelector(`#${message.id}`).innerHTML += output_html;
+            }
         }
     // });
     // str += "</ul>";
     // document.querySelector("#chat-log").innerHTML = str;
     // console.log(message);
-    document.querySelector("#chat-area").innerHTML += output_html;
+    
   };
 
   chatSocket.onclose = function (e) {

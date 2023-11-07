@@ -291,39 +291,6 @@ const sparcChartOptions = {
 const sparcChart = new ApexCharts(document.querySelector("#sparcChart"), sparcChartOptions);
 sparcChart.render();
 
-
-// Sentiment Analysis
-const sentimentOptions = {
-    series: [55, 67, 83],
-    chart: {
-        height: 200,
-        type: 'radialBar',
-    },
-    plotOptions: {
-        radialBar: {
-            dataLabels: {
-                name: {
-                    fontSize: '22px',
-                },
-                value: {
-                    fontSize: '16px',
-                },
-                total: {
-                    show: true,
-                    label: 'Total',
-                    formatter: function (w) {
-                        // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-                        return 249
-                    }
-                }
-            }
-        }
-    },
-    labels: ['Texture', 'Appearance', 'Flavour'],
-};
-
-const sentimentChart = new ApexCharts(document.querySelector("#sentimentAnalysis"), sentimentOptions);
-sentimentChart.render();
 const sparkOptions = {
     series: [{
         data: [25, 66, 41, 89, 63]
@@ -360,42 +327,51 @@ const sparkOptions = {
 const sparkChart = new ApexCharts(document.querySelector("#sparkChartSocial"), sparkOptions);
 sparkChart.render();
 
-const pieChartOptions = {
-    series: [44, 55, 41],
+const spark1 = {
     chart: {
-        width: 380,
-        type: 'donut',
-    },
-    colors:['#16a34a', '#ef4444', '#facc15'],
-    plotOptions: {
-        pie: {
-            startAngle: -90,
-            endAngle: 270
+        id: 'spark1',
+        group: 'sparks',
+        type: 'line',
+        height: 80,
+        sparkline: {
+            enabled: true
+        },
+        dropShadow: {
+            enabled: true,
+            top: 1,
+            left: 1,
+            blur: 2,
+            opacity: 0.2,
         }
     },
-    dataLabels: {
-        enabled: false
+    series: [{
+        data: [25, 66, 41, 59, 25, 44, 12, 36, 9, 21]
+    }],
+    stroke: {
+        curve: 'smooth'
     },
-    fill: {
-        type: 'gradient',
+    markers: {
+        size: 0
     },
-    legend: {
-        formatter: function(val, opts) {
-            return val + " - " + opts.w.globals.series[opts.seriesIndex]
+    grid: {
+        padding: {
+            top: 20,
+            bottom: 10,
+            left: 110
         }
     },
-    responsive: [{
-        breakpoint: 480,
-        options: {
-            chart: {
-                width: 200
-            },
-            legend: {
-                position: 'bottom'
+    colors: ['#fff'],
+    tooltip: {
+        x: {
+            show: false
+        },
+        y: {
+            title: {
+                formatter: function formatter(val) {
+                    return '';
+                }
             }
         }
-    }]
-};
-
-const pieChart = new ApexCharts(document.querySelector("#pieChart"), pieChartOptions);
-pieChart.render();
+    }
+}
+new ApexCharts(document.querySelector("#spark1"), spark1).render();

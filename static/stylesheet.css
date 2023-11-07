@@ -1,25 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000&display=swap");
 @font-face {
   font-family: 'Helvetica Neue "Medium"';
-  src: url("fonts/helveticaneue-medium-webfont.woff2") format("woff2"), url("fonts/helveticaneue-medium-webfont.woff") format("woff");
+  src: url("../static/fonts/helveticaneue-medium-webfont.woff2") format("woff2"), url("../static/fonts/helveticaneue-medium-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Helvetica Neue "Light"';
-  src: url("fonts/helveticaneue-light-webfont.woff2") format("woff2"), url("fonts/helveticaneue-light-webfont.woff") format("woff");
+  src: url("../static/fonts/helveticaneue-light-webfont.woff2") format("woff2"), url("../static/fonts/helveticaneue-light-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Helvetica Neue";
-  src: url("fonts/helveticaneue-black-webfont.woff2") format("woff2"), url("fonts/helveticaneue-black-webfont.woff") format("woff");
+  src: url("../static/fonts/helveticaneue-black-webfont.woff2") format("woff2"), url("../static/fonts/helveticaneue-black-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Helvetica Neue "Thin"';
-  src: url("fonts/helveticaneue-thin-webfont.woff2") format("woff2"), url("fonts/helveticaneue-thin-webfont.woff") format("woff");
+  src: url("../static/fonts/helveticaneue-thin-webfont.woff2") format("woff2"), url("../static/fonts/helveticaneue-thin-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -40,6 +40,9 @@ body .w-6 {
 body .w-7 {
   width: 1.75rem !important;
 }
+body .w-9 {
+  width: 2.25rem !important;
+}
 body .w-20 {
   width: 5rem !important; /* 80px */
 }
@@ -47,13 +50,16 @@ body .w-44 {
   width: 11rem !important;
 }
 body .h-2\.5 {
-  width: 10px !important;
+  height: 10px !important;
 }
 body .w-7 {
   height: 1.75rem !important;
 }
 body .h-8 {
   height: 2rem !important;
+}
+body .h-9 {
+  height: 2.25rem !important;
 }
 body .h-11 {
   height: 2.75rem !important;
@@ -87,9 +93,13 @@ body .select-year {
   padding: 0.5rem 0.75rem;
 }
 
-svg {
+.svg {
   height: 1rem !important;
   width: 1rem !important;
+}
+
+.rounded-2xl {
+  border-radius: 1.25rem !important;
 }
 
 .rounded-3xl,
@@ -124,6 +134,14 @@ a:hover {
   color: rgb(101, 92, 139) !important;
 }
 
+.text-blue-500 {
+  color: rgb(59, 130, 246) !important;
+}
+
+.text-blue-950 {
+  color: rgb(27, 37, 89) !important;
+}
+
 .text-green-500 {
   color: rgb(34, 197, 94) !important;
 }
@@ -136,6 +154,22 @@ a:hover {
   color: rgb(195, 20, 125) !important;
 }
 
+.text-teal-500 {
+  color: rgb(20, 184, 166) !important;
+}
+
+.text-red-600 {
+  color: rgb(220, 38, 38) !important;
+}
+
+.text-yellow-400 {
+  color: rgb(250, 204, 21) !important;
+}
+
+.text-stone-300 {
+  color: rgb(214, 211, 209) !important;
+}
+
 .bg-pink-600 {
   background: rgb(195, 20, 125) !important;
 }
@@ -144,12 +178,66 @@ a:hover {
   background: rgb(34, 197, 94) !important;
 }
 
+.bg-blue-700 {
+  background: rgb(29, 78, 216) !important;
+}
+
 .bg-yellow-500 {
   background: rgb(234, 179, 8) !important;
 }
 
 .bg-red-500 {
   background: rgb(239, 68, 68) !important;
+}
+
+.bg-purple-50 {
+  background: rgb(234, 222, 251);
+}
+
+.bg-purple-700 {
+  background: rgb(126, 34, 206);
+}
+
+.bg-violet-900 {
+  background: rgb(76, 29, 149) !important;
+}
+
+.bg-emerald-400 {
+  background: rgb(52, 211, 153);
+}
+
+.bg-rose-500 {
+  background: rgb(244, 63, 94);
+}
+
+.bg-yellow-400 {
+  background: rgb(250, 204, 21);
+}
+
+.bg-teal-100 {
+  background: rgb(204, 251, 241) !important;
+}
+
+.bg-rose-100 {
+  background: rgb(255, 228, 230) !important;
+}
+
+.bg-orange-100 {
+  background: rgb(255, 237, 213) !important;
+}
+
+.rounded {
+  border-radius: 50% !important;
+}
+
+.text-xs {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem; /* 16px */
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 aside {
@@ -750,7 +838,7 @@ main .search-bar .input-group-text:hover {
 .intent-panel .panel-content {
   color: rgb(100, 116, 139);
   font-family: "DM Sans", sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   line-height: 24px;
   word-wrap: break-word;
@@ -761,14 +849,19 @@ main .search-bar .input-group-text:hover {
   display: flex;
   justify-items: center;
   align-items: center;
-  width: 4rem;
-  height: 4rem;
+  width: 2.25rem;
+  height: 2.25rem;
   border-radius: 50%;
 }
 
 .overall-sentiment-card {
-  display: inline-flex;
-  padding: 1.5625rem 1.45744rem 1.375rem 1.5rem;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  padding: 1.5rem 1.4rem 1.3rem 1.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -792,6 +885,67 @@ main .search-bar .input-group-text:hover {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+
+.chart-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  font-family: 'Helvetica Neue "Medium"';
+  font-size: 1.15rem;
+  padding: 0.675em 6em 0.675em 1em;
+  background-color: rgb(234, 222, 251);
+  border: none;
+  border-radius: 1.25rem;
+  color: rgb(195, 20, 125);
+  cursor: pointer;
+}
+.chart-select:before, .chart-select:after {
+  --size: 0.3rem;
+  content: "^";
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+}
+.chart-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid rgb(255, 255, 255);
+  top: 55%;
+}
+
+.form-select-theme {
+  --bs-form-select-bg-img: url("images/chevron-down.png");
+  display: block;
+  width: 100%;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgb(195, 20, 125);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: rgb(234, 222, 251);
+  background-image: var(--bs-form-select-bg-img), var(--bs-form-select-bg-icon, none);
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: none;
+  border-radius: 0.4rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  font-size: 0.875rem;
+  border-color: transparent !important;
+}
+
+.table-head-theme {
+  --bs-table-color: $whiteColor;
+  --bs-table-bg: $purple-50!important;
+  --bs-table-border-color: $purple-50!important;
+  color: rgb(27, 37, 89);
+  border-color: rgb(237, 233, 254);
 }
 
 /*# sourceMappingURL=stylesheet.css.map */

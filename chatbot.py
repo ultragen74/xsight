@@ -26,7 +26,7 @@ model = AutoModelForCausalLM.from_pretrained(
     trust_remote_code=True,
     offload_folder = 'llama',
     token = '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',
-    # load_in_4bit=True
+    load_in_8bit=True
 )
 def get_cuda_memeory():
     mem_info = torch.cuda.mem_get_info()
